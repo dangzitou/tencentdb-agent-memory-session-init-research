@@ -32,7 +32,7 @@ Claude Code 通过 Homebrew 安装时出现下载中断，之后改用官方安�
 项目 rebase 到 `origin/feat/server_team` 后，启动本地服务：
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh/deploy/global-images
+cd tencentdb-agent-memory-dsh/deploy/global-images
 ./start-all.sh
 ```
 
@@ -43,10 +43,10 @@ MemoryCore、MemoryHub、MemoryProxy 均启动成功。启动过程中还修复�
 为了确保请求先经过 MemoryProxy，而不是被全局 CC-Switch 配置直接接管，本次使用以下命令：
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh
+cd tencentdb-agent-memory-dsh
 claude \
   --setting-sources project,local \
-  --settings ~/Developer/projects/notes/claude-memory-proxy.settings.json \
+  --settings ../notes/claude-memory-proxy.settings.json \
   --model agnes-2.0-flash
 ```
 

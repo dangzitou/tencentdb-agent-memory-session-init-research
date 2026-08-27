@@ -1,7 +1,7 @@
 # Claude Code + Agnes + TencentDB Agent Memory 实测记录
 
 > 实测日期：2026-08-28  
-> 工作目录：`~/Developer/projects`  
+> 工作目录：项目集合目录  
 > 安全说明：本文所有 API Key、管理密钥均已脱敏，未写入文档。
 
 ## 1. 实测结论
@@ -94,7 +94,7 @@ CC-Switch 实测版本为 `3.20.0`。已创建 `agnes-ai` Provider，主要配�
 项目目录：
 
 ```text
-~/Developer/projects/tencentdb-agent-memory-dsh
+tencentdb-agent-memory-dsh
 ```
 
 项目已 rebase 到 `origin/feat/server_team`，当前业务提交为 `33a7dff`，相对上游仅领先 1 个提交。冲突解决后保留了上游 snapshot trim 行为和新引入的 `PresetIdentity`。
@@ -112,16 +112,16 @@ CC-Switch 实测版本为 `3.20.0`。已创建 `agnes-ai` Provider，主要配�
 为避免在文件中保存管理密钥，Claude Code 使用 `apiKeyHelper` 从项目生成的 `.admin-key` 中读取凭据。安全配置文件：
 
 ```text
-~/Developer/projects/notes/claude-memory-proxy.settings.json
+notes/claude-memory-proxy.settings.json
 ```
 
 通过 Agent Memory 启动 Claude Code 的命令：
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh
+cd tencentdb-agent-memory-dsh
 claude \
   --setting-sources project,local \
-  --settings ~/Developer/projects/notes/claude-memory-proxy.settings.json \
+  --settings ../notes/claude-memory-proxy.settings.json \
   --model agnes-2.0-flash
 ```
 
@@ -258,17 +258,17 @@ Rebase 涉及的聚焦测试通过：`2` 个测试文件、`9` 个测试用例�
 ### 启动服务
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh/deploy/global-images
+cd tencentdb-agent-memory-dsh/deploy/global-images
 ./start-all.sh
 ```
 
 ### 启动带 Session Init 的 Claude Code
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh
+cd tencentdb-agent-memory-dsh
 claude \
   --setting-sources project,local \
-  --settings ~/Developer/projects/notes/claude-memory-proxy.settings.json \
+  --settings ../notes/claude-memory-proxy.settings.json \
   --model agnes-2.0-flash
 ```
 
@@ -283,7 +283,7 @@ claude
 ### 停止服务
 
 ```bash
-cd ~/Developer/projects/tencentdb-agent-memory-dsh/deploy/global-images
+cd tencentdb-agent-memory-dsh/deploy/global-images
 ./stop-all.sh
 ```
 
